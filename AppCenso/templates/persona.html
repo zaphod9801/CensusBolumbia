@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+    {% load static %}
+    {% block  title %}
+        Persona
+    {% endblock   %}
+    {%block content%}
+       
+        {% if formulario.errors %}
+            <p style="color: red;"> Revisar este campo </p> 
+        {% endif %}
+        <br>
+        <form action = "" method = "POST"> {% csrf_token %}
+        <div id="content">
+        <h1 style = "color: black; font-weight: bolder;"> <strong> Sobre esta persona </strong> </h1>
+        <br>
+        <strong>
+        {{formulario.as_p}}
+        </strong>
+        <strong>
+        <br>
+        </div>
+        {% if formEnviado == 0 %}
+        <div id = "enviar">
+        <input  type = "submit" value = "Enviar">
+        </div>
+        {% endif %}
+        {% if formEnviado == 1 %}
+        <p style="color: red; font-weight: bolder;"> Formulario de Persona finalizado </p>
+        {% endif %}
+        </strong>
+        </form>
+    {% endblock %}

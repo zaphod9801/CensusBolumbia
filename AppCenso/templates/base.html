@@ -1,0 +1,151 @@
+<html>
+
+<head>
+
+
+    {% load static %}
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+
+     <!-- Fonts -->
+    
+     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet"> 
+     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+     
+
+    <!-- Styles -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+    {% block  title %}
+    
+    {% endblock   %}
+    </title>
+</head>
+
+<body>
+    <div style = "background-color: rgba(0, 47, 255, 0.8);">
+    <h1 class="site-heading text-center text-white d-none d-lg-block">
+      
+      <span class="site-heading-lower" >Censo de Bolumbia</span>
+      </h1>
+      <div id="navegador">
+      {% if request.path == '/' or request.path == '/registro/'%}
+
+      <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+    | |<div class="container">
+      <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="{% url 'login' %}">Censo Bolumbia</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav mx-auto">
+
+      <li class="nav-item {% if request.path == '/regsitro/' %} active {% endif %} px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="{% url 'registro' %}">Registro</a>
+          </li>
+
+      <li class="nav-item {% if request.path == '/' %} active {% endif %} px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="{% url 'login' %}">Log in</a>
+          </li>
+         <li class="nav-item {% if request.path == '/admin/' %} active {% endif %} px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="http://127.0.0.1:8000/admin/login/?next=/admin/">Admin</a>
+          </li>
+          </ul>
+       </div>
+      </div>
+    </nav>
+      {% endif %}
+
+      {% if request.path == '/AppCenso/direccion/' or request.path == '/AppCenso/persona/' or request.path == '/AppCenso/vivienda/' or request.path == '/AppCenso/feedback/'%}
+
+        <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+    | |<div class="container">
+      <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="{% url 'login' %}">Censo Bolumbia</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item  {% if request.path == '/' %} active {% endif %} px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="{% url 'login' %}">Inicio</a>
+          </li>
+          <li class="nav-item {% if request.path == '/AppCenso/direccion/' %} active {% endif %} px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="{% url 'direccion' %}">Direccion</a>
+          </li>
+          <li class="nav-item {% if request.path == '/AppCenso/persona/' %} active {% endif %} px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="{% url 'persona' %}">Persona</a>
+          </li>
+          <li class="nav-item {% if request.path == '/AppCenso/vivienda/' %} active {% endif %} px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="{% url 'vivienda' %}">Vivienda</a>
+          </li>
+          <li class="nav-item {% if request.path|slice:':6' == '/AppCenso/feedback/' %} active {% endif %} px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="{% url 'feedback' %}">Feedback</a>
+          </li>
+
+          <li class="nav-item  px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="/">Log Out</a>
+          </li>
+         
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+      {% endif %}
+      </ul>
+      </div>
+    </div>
+
+
+
+  
+    <center>
+    {%block content%}
+    {% endblock %}
+    </center>
+
+  
+  
+
+
+    <!-- Footer -->
+    <footer class="footer text-faded text-center py-5">
+      <div class="container">
+        <p class="m-0">
+	        <a href="#" class="link">
+	          <span class="fa-stack fa-lg">
+	            <i class="fa fa-circle fa-stack-2x"></i>
+	            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+	          </span>
+	        </a>
+	        <a href="#" class="link">
+	          <span class="fa-stack fa-lg">
+	            <i class="fa fa-circle fa-stack-2x"></i>
+	            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+	          </span>
+	        </a>
+	        <a href="#" class="link">
+	          <span class="fa-stack fa-lg">
+	            <i class="fa fa-circle fa-stack-2x"></i>
+	            <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
+	          </span>
+	        </a>
+	    </p>
+        <p class="m-0 mbt">
+        	<a href="https://www.tierragamer.com/wp-content/uploads/2019/07/JoJos-Bizarre-Adventure-Dio-Brando.jpg" class="link">Política de privacidad</a> ·
+        	<a href="https://www.tierragamer.com/wp-content/uploads/2019/07/JoJos-Bizarre-Adventure-Dio-Brando.jpg" class="link">Aviso legal</a> ·
+        	<a href="https://www.tierragamer.com/wp-content/uploads/2019/07/JoJos-Bizarre-Adventure-Dio-Brando.jpg" class="link">Cookies</a>
+		</p>
+        <p class="m-0 mbt1">&copy; CoronaApp Lite 2020</p>
+      </div>
+	</footer>
+
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
+</body>
+
+
+</html>

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+    {% load static %}
+    {% block  title %}
+        Registro
+    {% endblock   %}
+    {%block content%}
+       
+        {% if formulario.errors %}
+            <p style="color: red;"> Revisar este campo </p> 
+        {% endif %}
+        <br>
+        <form action = "" method = "POST"> {% csrf_token %}
+        <div id="content">
+        <h1 style = "color: white; font-weight: bolder;"> <strong> Registro  </strong> </h1>
+        <br>
+        <strong>
+        {{form.as_p}}
+        </strong>
+        <strong>
+        <br>
+        </div>
+        <div id = "enviar">
+        <input  type = "submit" value = "Registrarse">
+        </div>
+        </strong>
+        </form>
+    {% endblock %}
