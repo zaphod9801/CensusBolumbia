@@ -21,7 +21,7 @@
         </div>
         {% if formEnviado == 0 %}
         <div id = "enviar">
-        <input  type = "submit" onclick="return confirm('¿Seguro que desea guardar?')" value = "Enviar">
+        <input  type = "submit" onclick="return confirm('¿Seguro que desea guardar?')" value = "Guardar Vivienda">
         </div>
         {% endif %}
         {% if formEnviado == 1 %}
@@ -29,4 +29,11 @@
         {% endif %}
         </strong>
         </form>
+         <ul class="navbar-nav mx-auto">
+        <li class="nav-item px-lg-4">
+            <a class="btn btn-primary btn-lg" href="{% url 'enviarVivienda' %}">Enviar Censo</a>
+          </li> </ul>
+        {% if alerta == 1%}
+        <p style="color: red; font-weight: bolder;"> Aun no ha finalizado el censo, por favor termine antes de enviar </p>
+        {% endif %}
     {% endblock %}

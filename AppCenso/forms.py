@@ -17,7 +17,7 @@ tiposVivienda = (
 departamentos = (
     ('Antioquia','Antioquia'),
     ('Atlantico','Atlantico'),
-    ('Amazonas','Leticia'),
+    ('Amazonas','Amazonas'),
 )
 
 ciudades = (
@@ -66,3 +66,8 @@ class formVivienda(forms.Form):
 
 class formFeedback(forms.Form):
     feedback = forms.CharField(label="Si tiene algún comentario o sugerencia, escribalo a continuación por favor.",required=False,widget=forms.Textarea)
+
+
+class formImprimir(forms.Form):
+    departamento = forms.ChoiceField(label="¿En que departamento vive?",widget=forms.Select,choices = departamentos)
+    ciudad = forms.ChoiceField(label="¿En que ciudad vive?", widget=forms.Select, choices = ciudades)
