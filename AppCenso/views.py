@@ -22,11 +22,9 @@ def VistaDireccion(request):
     validador = formEnviado[0]
     if request.method == 'POST':
         formulario = formDireccion(request.POST)
-        
         if formulario.is_valid():
             info = formulario.cleaned_data
             iterador = 0
-            print(datosToUpload)
             datosToUpload[0] = info['departamento']
             for key in info.keys():
                 for i in range(iterador):
@@ -69,6 +67,7 @@ def VistaDireccion(request):
     
     return render(request,"direccion.html",contexto) 
 
+    
 
 def VistaPersona(request):
     global formEnviado
@@ -85,42 +84,33 @@ def VistaPersona(request):
                 i = 6
                 for i in range(iterador):
                     datosToUpload[iterador] = info[key]
-                iterador += 1
-            
-            if info['agregarPersona'] == 'Si':
-                contexto = {
-                    "formulario":formulario
-                }
+                iterador += 1        
                 
-                request.session['form_dataPersona'] = formulario.cleaned_data
-                return redirect("/AppCenso/persona2/")
-            else:
-                
-                formEnviado[1] = 1
-                validador = formEnviado[1]
-                contexto = {
-                    "formulario":formulario,
-                    "formEnviado":validador
-                }
-                request.session['form_dataPersona'] = formulario.cleaned_data
+            formEnviado[1] = 1
+            validador = formEnviado[1]
+            contexto = {
+                "formulario":formulario,
+                "formEnviado":validador
+            }
+            request.session['form_dataPersona'] = formulario.cleaned_data
             
-                n1 = formEnviado[0]
-                n2 = formEnviado[1]
-                n3 = formEnviado[2]
-                n4 = formEnviado[3]
+            n1 = formEnviado[0]
+            n2 = formEnviado[1]
+            n3 = formEnviado[2]
+            n4 = formEnviado[3]
                 
-                if (n1+n2+n3+n4) == 4:
-            
-                    SubirDatos()
-                    del request.session['form_dataDireccion']
-                    del request.session['form_dataPersona']
-                    del request.session['form_dataVivienda']
-                    del request.session['form_dataFeedback']
-                    del datosToUpload[:]
-                    formEnviado = [0,0,0,0]
-                    return render(request,"gracias.html")
-                else: 
-                    return render(request,"persona.html",contexto) 
+            if (n1+n2+n3+n4) == 4:
+        
+                SubirDatos()
+                del request.session['form_dataDireccion']
+                del request.session['form_dataPersona']
+                del request.session['form_dataVivienda']
+                del request.session['form_dataFeedback']
+                del datosToUpload[:]
+                formEnviado = [0,0,0,0]
+                return render(request,"gracias.html")
+            else: 
+                return render(request,"persona.html",contexto) 
             
     else:
         formulario = formPersona(initial=request.session.get('form_dataPersona'))
@@ -131,37 +121,6 @@ def VistaPersona(request):
     }
         
     return render(request,"persona.html",contexto) 
-
-
-def VistaPersona2(request):
-    
-    if request.method == 'POST':
-        formulario = formPersona(request.POST)
-        
-        if formulario.is_valid():
-            info = formulario.cleaned_data
-               
-            for key in info.keys():
-                datosToUpload.append(info[key])
-            
-            if info['agregarPersona'] == 'Si':
-                contexto = {
-                    "formulario":formulario
-                }
-                request.session['form_data'] = formulario.cleaned_data
-                return render(request,"persona2.html",contexto) 
-            else:
-                request.session['form_data'] = formulario.cleaned_data
-                return redirect("/AppCenso/vivienda/")
-            
-    else:
-        formulario = formPersona(initial=request.session.get('form_data'))
-            
-    contexto = {
-        "formulario":formulario
-    }
-        
-    return render(request,"persona2.html",contexto) 
         
         
 
@@ -267,7 +226,6 @@ def VistaFeedback(request):
         "formulario":formulario,
         "formEnviado":validador
     }
-    print(datosToUpload)
     
     return render(request,"feedback.html",contexto) 
         

@@ -14,9 +14,29 @@ tiposVivienda = (
     ('Otro','Otro'),
 )
 
+departamentos = (
+    ('Antioquia','Antioquia'),
+    ('Atlantico','Atlantico'),
+    ('Amazonas','Leticia'),
+)
+
+ciudades = (
+    ('Antioquia: Medellin','Antioquia: Medellin'),
+    ('Antioquia: Rionegro','Antioquia: Rionegro'),
+    ('Antioquia: Bello','Antioquia: Bello'),
+    ('Amazonas: Leticia','Amazonas: Leticia'),
+    ('Amazonas: Tarapaca','Amazonas: Tarapaca'),
+    ('Amazonas: El encanto','Amazonas: El encanto'),
+    ('Atlantico: Barranquilla','Atlantico: Barranquilla'),
+    ('Atlantico: Puerto Colombia','Atlantico: Puerto Colombia'),
+    ('Atlantico: Soledad','Atlantico: Soledad'),
+)
+
+
+
 class formDireccion(forms.Form):
-    departamento = forms.CharField(label="¿En que departamento vive?")
-    ciudad = forms.CharField(label="¿En que ciudad vive?")
+    departamento = forms.ChoiceField(label="¿En que departamento vive?",widget=forms.Select,choices = departamentos)
+    ciudad = forms.ChoiceField(label="¿En que ciudad vive?", widget=forms.Select, choices = ciudades)
     barrio = forms.CharField(label="¿En que barrio vive?")
     direccion = forms.CharField(label="¿Cual es su dirección?")
     estrato = forms.IntegerField(label="¿Cual es el estrato de la zona donde vive?")
@@ -31,11 +51,10 @@ class formPersona(forms.Form):
     SegundoApellido = forms.CharField(label="Segundo apellido")
     edad = forms.IntegerField(label="Edad")
     profesion = forms.CharField(label="Profesión actual")
-    agregarPersona = forms.ChoiceField(label="Desea agregar otra persona?",widget=forms.Select,choices=opciones)
     
 
 class formVivienda(forms.Form):
-    area = forms.IntegerField(label="Area en metros cuadrados de su vivienda")
+    area = forms.IntegerField(label="Area en metros cuadrados de su vivienda", max_value=99999)
     tipo = forms.ChoiceField(label="Tipo de vivienda", widget=forms.Select, choices=tiposVivienda)
     agua = forms.ChoiceField(label="¿Tiene servicio de agua?",widget=forms.Select,choices=opciones)
     luz = forms.ChoiceField(label="¿Tiene servicio de electricidad?",widget=forms.Select,choices=opciones)

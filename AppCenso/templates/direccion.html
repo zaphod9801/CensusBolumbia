@@ -21,7 +21,7 @@
         
         {% if formEnviado == 0 %}
         <div id = "enviar">
-        <input  type = "submit" value = "Enviar">
+        <input  type = "submit" onclick="return confirm('¿Seguro que desea guardar?')" value = "Guardar">
         </div>
         {% endif %}
         {% if formEnviado == 1 %}
@@ -29,4 +29,6 @@
         {% endif %}
         </strong>
         </form>
+
+
     {% endblock %}
