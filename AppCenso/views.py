@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from django.views.decorators.cache import cache_page
-from AppCenso.forms import formVivienda,formPersona,formDireccion,formFeedback
+from AppCenso.forms import formVivienda,formPersona,formDireccion,formFeedback, formImprimir
 from AppCenso.models import Vivienda,Persona,Direccion,Feedback, Datos
 from usuario.views import EnviarCFN
 # Create your views here.
@@ -306,7 +306,38 @@ def EnviarFeedback(request):
         return redirect("/AppCenso/feedback/")
 
 
+#Está función se encarga de imprimir los datos existentes en la base de datos en función de dos parametros, departamento y ciudad
+def ImprimirDatos(request):
+    if request.method == 'POST':
+        formulario = formImprimir(request.POST)
+        
+        if formulario.is_valid():
+            info = formulario.cleaned_data
+            dat = Datos.objects.filter(departamento = info['departamento'], ciudad = info['ciudad'])
+            NumeroRegistros = dat.count()
+            datos = []
+            
+            for registro in dat:
+                datos.append(registro)
+            
+            contexto = {
+                "registros":datos,
+                "Numero":NumeroRegistros,
+                "departamento":info['departamento'],
+                "ciudad":info['ciudad']
+            }
+            
+            return render(request,"imprimir.html",contexto)
+        
+    else:
+        formulario = formImprimir()
+        
+    contexto = {
+        "formulario":formulario,       
+    }
     
+    return render(request,"formImprimir.html",contexto)        
+          
             
 #Esta función se encarga de subir los datos del vector datosToUpload a la base de datos (usando la tabla "datos"), una vez el usuario finalizó el censo        
 def SubirDatos():

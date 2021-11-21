@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+    {% load static %}
+    {% block  title %}
+        Consulta al Censo
+    {% endblock   %}
+    {%block content%}
+        <br>
+    
+        <div id="content">
+        <h1 style = "color: black; font-weight: bolder;"> <strong> Tu Consulta </strong> </h1>
+        <br>
+        <h3 style = "color: black; font-weight: bolder;"> <strong> Tu consulta sobre el departamento: {{departamento}} y la ciudad: {{ciudad}} obtuvo {{Numero}} registros </strong> </h1>
+        <br>
+        <strong>
+        {% for registro in registros %}
+
+        <section class="page-section clearfix">
+            <div class="container">
+            <div class="intro">
+                <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+                <h2 class="section-heading mb-4" >
+                    <span class="section-heading-upper">Barrio: {{registro.barrio}}</span>
+                    <span class="section-heading-upper">Profesion: {{registro.profesion}}</span>
+                    <span class="section-heading-lower">Tipo de casa: {{registro.tipo}}</span>
+                </h2>
+                
+                </div>
+            </div>
+            </div>
+        </section>
+
+
+        {% endfor %}
+        </strong>
+        <strong>
+        <br>
+        </div>
+       
+       
+    {% endblock %}

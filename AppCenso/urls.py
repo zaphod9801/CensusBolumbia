@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import VistaDireccion, VistaPersona, VistaVivienda, VistaFeedback, EnviarDireccion, EnviarPersona, EnviarVivienda, EnviarFeedback
+from .views import VistaDireccion, VistaPersona, VistaVivienda, VistaFeedback, EnviarDireccion, EnviarPersona, EnviarVivienda, EnviarFeedback, ImprimirDatos
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.decorators.cache import cache_page
@@ -16,6 +16,8 @@ urlpatterns = [
     
     path('feedback/',VistaFeedback,name = "feedback"),
     path('enviarFeedback/',EnviarFeedback,name = "enviarFeedback"),
+    
+    path('consulta/',ImprimirDatos,name = "consulta"),
 ]
 
 

@@ -15,7 +15,6 @@ def registro(request):
         form = registroForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, f'Hola! Como estas hoy?')
             return redirect("/AppCenso/direccion/")
     else:
         form = registroForm()

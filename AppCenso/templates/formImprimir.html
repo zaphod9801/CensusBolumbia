@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+    {% load static %}
+    {% block  title %}
+        Consulta al Censo
+    {% endblock   %}
+    {%block content%}
+       
+        {% if formulario.errors %}
+            <p style="color: red;"> Revisar este campo </p> 
+        {% endif %}
+        <br>
+        <form action = "" method = "POST"> {% csrf_token %}
+        <div id="content">
+        <h1 style = "color: black; font-weight: bolder;"> <strong> Consultar al Censo </strong> </h1>
+        <br>
+        <h3 style = "color: black; font-weight: bolder;"> <strong> Por favor escoge un departamento y una ciudad a consultar </strong> </h1>
+        <br>
+        <strong>
+        {{formulario.as_p}}
+        </strong>
+        <strong>
+        <br>
+        </div>
+        <div id = "enviar">
+        <input  type = "submit" value = "Consultar">
+        </div>
+        </strong>
+        </form>
+    {% endblock %}
