@@ -39,8 +39,8 @@ class formDireccion(forms.Form):
     ciudad = forms.ChoiceField(label="¿En que ciudad vive?", widget=forms.Select, choices = ciudades)
     barrio = forms.CharField(label="¿En que barrio vive?")
     direccion = forms.CharField(label="¿Cual es su dirección?")
-    estrato = forms.IntegerField(label="¿Cual es el estrato de la zona donde vive?")
-    codigoPostal = forms.IntegerField(label="¿Cual es el codigo postal de la zona donde vive?")
+    estrato = forms.IntegerField(label="¿Cual es el estrato de la zona donde vive?", min_value = 1, max_value = 6)
+    codigoPostal = forms.IntegerField(label="¿Cual es el codigo postal de la zona donde vive?", min_value = 10000, max_value=99999)
     
     
     
@@ -49,12 +49,12 @@ class formPersona(forms.Form):
     SegundoNombre = forms.CharField(label="Segundo nombre (si tiene)",required=False)
     PrimerApellido = forms.CharField(label="Primer apellido")
     SegundoApellido = forms.CharField(label="Segundo apellido")
-    edad = forms.IntegerField(label="Edad")
+    edad = forms.IntegerField(label="Edad", min_value = 0, max_value = 150)
     profesion = forms.CharField(label="Profesión actual")
     
 
 class formVivienda(forms.Form):
-    area = forms.IntegerField(label="Area en metros cuadrados de su vivienda", max_value=99999)
+    area = forms.IntegerField(label="Area en metros cuadrados de su vivienda", max_value=9999)
     tipo = forms.ChoiceField(label="Tipo de vivienda", widget=forms.Select, choices=tiposVivienda)
     agua = forms.ChoiceField(label="¿Tiene servicio de agua?",widget=forms.Select,choices=opciones)
     luz = forms.ChoiceField(label="¿Tiene servicio de electricidad?",widget=forms.Select,choices=opciones)

@@ -10,18 +10,24 @@
         {% endif %}
         <br>
         <form action = "" method = "POST"> {% csrf_token %}
-        <div id="content">
-        <h1 style = "color: white; font-weight: bolder;"> <strong> Iniciar sesion </strong> </h1>
+        <div id="content" class="col-lg-3">
+        <h1 style = "color: black; font-weight: bolder;"> <strong> Ingresar </strong> </h1>
         <br>
+        <div class="card">
+        <table class="table table-hover">
         <strong>
-        {{form.as_p}}
+        {{form.as_table}}
         </strong>
+        </table>
         <strong>
         <br>
-        </div>
         <div id = "enviar">
-        <input  type = "submit" value = "Iniciar sesion">
+        <input  type = "submit" value = "Iniciar sesion" class="btn btn-primary btn-sm">
         </div>
+        <br>
+         </div>
         </strong>
         </form>
+        </div>
+    
     {% endblock %}

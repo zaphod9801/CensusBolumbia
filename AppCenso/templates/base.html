@@ -48,9 +48,6 @@
       <li class="nav-item {% if request.path == '/' %} active {% endif %} px-lg-4">
             <a class="nav-link text-uppercase text-expanded" href="{% url 'login' %}">Ingresar</a>
           </li>
-         <li class="nav-item {% if request.path == '/admin/' %} active {% endif %} px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="http://127.0.0.1:8000/admin/login/?next=/admin/">Admin</a>
-          </li>
           </ul>
        </div>
       </div>
@@ -83,6 +80,9 @@
             <a class="nav-link text-uppercase text-expanded" href="{% url 'feedback' %}">Feedback</a>
           </li>
 
+          <li class="nav-item {% if request.path|slice:':6' == '/AppCenso/consulta/' %} active {% endif %} px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="{% url 'consulta' %}">Consultar Datos</a>
+          </li>
 
           <li class="nav-item  px-lg-4">
             <a class="nav-link text-uppercase text-expanded" href="/">Salir</a>
@@ -125,11 +125,12 @@
      </ul>
       </div>
     </div>
-  
+    <div class="container">
     <center>
     {%block content%}
     {% endblock %}
     </center>
+    </div>
 
   
   

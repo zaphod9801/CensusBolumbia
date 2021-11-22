@@ -5,34 +5,42 @@
     {% endblock   %}
     {%block content%}
         <br>
-    
+
         <div id="content">
+        <div class="card">
         <h1 style = "color: black; font-weight: bolder;"> <strong> Tu Consulta </strong> </h1>
         <br>
-        <h3 style = "color: black; font-weight: bolder;"> <strong> Tu consulta sobre el departamento: {{departamento}} y la ciudad: {{ciudad}} obtuvo {{Numero}} registros </strong> </h1>
+        <h3 style = "color: black; font-weight: bolder;"> <strong> Tu consulta sobre {{ciudad}} obtuvo {{Numero}} {% if Numero > 1 %} registros {% endif %} {% if Numero == 1 %} registro {% endif %}</strong> </h1>
         <br>
+        <table class="table table-hover">
+        <tr>
         <strong>
+        <th> Registro  </th>
+         <th> Barrio  </th>
+          <th> Profesion  </th>
+           <th> Tipo de casa </th>
+          </strong>
+           </tr>
+            
         {% for registro in registros %}
 
-        <section class="page-section clearfix">
-            <div class="container">
-            <div class="intro">
-                <div class="intro-text left-0 text-center bg-faded p-5 rounded">
-                <h2 class="section-heading mb-4" >
-                    <span class="section-heading-upper">Barrio: {{registro.barrio}}</span>
-                    <span class="section-heading-upper">Profesion: {{registro.profesion}}</span>
-                    <span class="section-heading-lower">Tipo de casa: {{registro.tipo}}</span>
-                </h2>
+        
                 
-                </div>
-            </div>
-            </div>
-        </section>
+                    <tr>
+                    <th>{{forloop.counter}}</th>
+                    <th>{{registro.barrio}}</th>
+                    <th>{{registro.profesion}}</th>
+                    <th>{{registro.tipo}}</th>
+                    </tr>
+               
+                
+        
 
 
         {% endfor %}
-        </strong>
-        <strong>
+        </table>
+        </div>
+       
         <br>
         </div>
        

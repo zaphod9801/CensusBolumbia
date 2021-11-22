@@ -10,20 +10,27 @@
         {% endif %}
         <br>
         <form action = "" method = "POST"> {% csrf_token %}
-        <div id="content">
+        <div id="content" class="col-lg-6">
         <h1 style = "color: black; font-weight: bolder;"> <strong> Consultar al Censo </strong> </h1>
         <br>
         <h3 style = "color: black; font-weight: bolder;"> <strong> Por favor escoge un departamento y una ciudad a consultar </strong> </h1>
         <br>
+        <div class="card">
+        <table class="table table-hover">
         <strong>
-        {{formulario.as_p}}
+        {{formulario.as_table}}
         </strong>
+        </table>
         <strong>
         <br>
-        </div>
         <div id = "enviar">
-        <input  type = "submit" value = "Consultar">
+        <input  type = "submit" value = "Consultar" class="btn btn-primary btn-sm">
+        <br>
+        <br>
+        </div>
+        </div>
         </div>
         </strong>
         </form>
+        </div>
     {% endblock %}

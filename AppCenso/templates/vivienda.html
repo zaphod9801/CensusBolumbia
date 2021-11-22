@@ -4,36 +4,48 @@
         Vivienda
     {% endblock   %}
     {%block content%}
-       
         {% if formulario.errors %}
             <p style="color: red;"> Revisar este campo </p> 
         {% endif %}
         <br>
         <form action = "" method = "POST"> {% csrf_token %}
-        <div id="content">
-        <h1 style = "color: black; font-weight: bolder;"> <strong> Sobre tu vivienda </strong> </h1>
+        <div id="content" class="col-lg-6">
+        <h1 style = "color: black; font-weight: bolder;"> <strong> Sobre tu Vivienda </strong> </h1>
         <br>
         <strong>
-        {{formulario.as_p}}
+        <div class="card">
+        <table class="table table-hover">
+        {{formulario.as_table}}
         </strong>
+        </table>
         <strong>
         <br>
-        </div>
+        
         {% if formEnviado == 0 %}
         <div id = "enviar">
-        <input  type = "submit" onclick="return confirm('¿Seguro que desea guardar?')" value = "Guardar Vivienda">
+        <input  type = "submit" onclick="return confirm('¿Seguro que desea guardar?')" value = "Guardar Vivienda" class="btn btn-primary btn-sm">
+        <br>
+        <br>
         </div>
         {% endif %}
         {% if formEnviado == 1 %}
+        <div class="alert alert-primary" role="alert">
         <p style="color: blue; font-weight: bolder;"> Formulario de Vivienda finalizado </p>
+        </div>
         {% endif %}
         </strong>
         </form>
-         <ul class="navbar-nav mx-auto">
+        </div>
+        <br>
+        <ul class="navbar-nav mx-auto">
         <li class="nav-item px-lg-4">
             <a class="btn btn-primary btn-lg" href="{% url 'enviarVivienda' %}" onclick="return confirm('¿Seguro que desea enviar el censo?')">Enviar Censo</a>
           </li> </ul>
+          <br>
         {% if alerta == 1%}
+        <div class="alert alert-danger" role="alert">
         <p style="color: red; font-weight: bolder;"> Aun no ha finalizado el censo, por favor termine antes de enviar </p>
+        </div>
         {% endif %}
+        </div>
     {% endblock %}

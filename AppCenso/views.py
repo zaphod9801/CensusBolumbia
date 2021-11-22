@@ -10,7 +10,7 @@ datosToUpload = [] #Para subir los datos de forma mas mela
 del datosToUpload[:]  #Toca borrar porque sino la cosa esa se quedaba con los valores pasados siempre
 datosToUpload = [None] * 22 #Le asignamos valores nulos a todos los campos, sino las vistas no obtenian adecuadamente el tamaño del vector
 formEnviado = [0,0,0,0] #Servira para saber que categoria ya está lista
-alertaDireccion = 0 #Definición de todas las alertas que usarán las funciones de Enviar
+alertaDireccion = 0 #Definición de todas las alertas que usarán las funciones de Enviar Censo
 alertaPersona = 0 
 alertaVivienda = 0
 alertaFeedback = 0
@@ -21,7 +21,13 @@ def VistaDireccion(request):
     global formEnviado #Traer las globales necesarias, sino no las reconoce
     global datosToUpload
     global alertaDireccion
+    global alertaPersona
+    global alertaFeedback
+    global alertaVivienda
     validador = formEnviado[0] #Establecemos un validador con el valor actual del vector formEnviado, esto maneja el mensaje de finalización del formulario
+    alertaFeedback = 0 #Para que las alertas de formulario no finalizado desaparezcan al irse a otra pagina
+    alertaPersona = 0
+    alertaVivienda = 0
     if request.method == 'POST':
         formulario = formDireccion(request.POST) 
         if formulario.is_valid():
@@ -95,8 +101,13 @@ def VistaPersona(request):
     global formEnviado
     global datosToUpload
     global alertaPersona
+    global alertaDireccion
+    global alertaFeedback
+    global alertaVivienda
     validador = formEnviado[1]
-
+    alertaDireccion = 0
+    alertaFeedback = 0
+    alertaVivienda = 0
     if request.method == 'POST':
         formulario = formPersona(request.POST)
         
@@ -167,7 +178,13 @@ def VistaVivienda(request):
     global formEnviado
     global datosToUpload
     global alertaVivienda
+    global alertaDireccion
+    global alertaFeedback
+    global alertaPersona
     validador = formEnviado[2]
+    alertaDireccion = 0
+    alertaPersona = 0
+    alertaFeedback = 0
     if request.method == 'POST':
         formulario = formVivienda(request.POST)
         
@@ -240,7 +257,13 @@ def VistaFeedback(request):
     global formEnviado
     global datosToUpload
     global alertaFeedback
+    global alertaDireccion
+    global alertaPersona
+    global alertaVivienda
     validador = formEnviado[3]
+    alertaDireccion = 0
+    alertaPersona = 0
+    alertaVivienda = 0
     if request.method == 'POST':
         formulario = formFeedback(request.POST)
         
@@ -313,12 +336,12 @@ def ImprimirDatos(request):
         
         if formulario.is_valid():
             info = formulario.cleaned_data
-            dat = Datos.objects.filter(departamento = info['departamento'], ciudad = info['ciudad'])
-            NumeroRegistros = dat.count()
-            datos = []
+            dat = Datos.objects.filter(departamento = info['departamento'], ciudad = info['ciudad']) #Porque se filtra por departamento y ciudad, deben ser iguales
+            NumeroRegistros = dat.count() #Para saber cuantos registros hay
+            datos = [] #Vector de los registros que recupere la consulta
             
             for registro in dat:
-                datos.append(registro)
+                datos.append(registro) #Agregamos el resultadod de la consulta al vector
             
             contexto = {
                 "registros":datos,
@@ -327,7 +350,7 @@ def ImprimirDatos(request):
                 "ciudad":info['ciudad']
             }
             
-            return render(request,"imprimir.html",contexto)
+            return render(request,"imprimir.html",contexto) #El html que imprime los resultados es distinto al que pregunta departamento y ciudad
         
     else:
         formulario = formImprimir()
