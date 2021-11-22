@@ -339,6 +339,7 @@ def ImprimirDatos(request):
         if formulario.is_valid():
             info = formulario.cleaned_data
             dat = Datos.objects.filter(departamento = info['departamento'], ciudad = info['ciudad']) #Porque se filtra por departamento y ciudad, deben ser iguales
+            dat = Datos.objects.all()
             NumeroRegistros = dat.count() #Para saber cuantos registros hay
             datos = [] #Vector de los registros que recupere la consulta
             
