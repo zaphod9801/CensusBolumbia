@@ -316,8 +316,7 @@ def EnviarFeedback(request):
     n1 = request.session.get('direccionEnviado')
     n2 = request.session.get('personaEnviado')
     n3 = request.session.get('viviendaEnviado')
-    n4 = request.session.get('feedbackEnviado')
-    print(request.user.get_username())        
+    n4 = request.session.get('feedbackEnviado')      
     if (n1+n2+n3+n4) == 4: #Si todos los valores estan en 1, significa que todas las categorias están listas y se puede enviar el censo
         
         SubirDatos(request)
