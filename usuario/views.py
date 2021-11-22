@@ -15,7 +15,7 @@ def registro(request):
         form = registroForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("/AppCenso/inicial/")
+            return redirect("/")
     else:
         form = registroForm()
     contexto = {
