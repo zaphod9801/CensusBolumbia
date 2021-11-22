@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.views.decorators.cache import cache_page
 from AppCenso.forms import formVivienda,formPersona,formDireccion,formFeedback, formImprimir
 from AppCenso.models import Vivienda,Persona,Direccion,Feedback, Datos
-from usuario.views import EnviarCFN
+
 # Create your views here.
 
 datosToUpload = [] #Para subir los datos de forma mas mela

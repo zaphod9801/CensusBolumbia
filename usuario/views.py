@@ -7,7 +7,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login as do_login
 
-CFNSupreme = 1456
+
 
 # Create your views here.
 def registro(request):
@@ -26,7 +26,6 @@ def registro(request):
 def login(request):
     # Creamos el formulario de autenticación vacío
     form = loginForm()
-    global CFNSupreme 
     if request.method == "POST":
         # Añadimos los datos recibidos al formulario
         form = loginForm(data=request.POST)
@@ -35,7 +34,6 @@ def login(request):
             # Recuperamos las credenciales validadas
             CFN = form.cleaned_data['username']
             ECN = form.cleaned_data['password']
-            CFNSupreme = CFN
             # Verificamos las credenciales del usuario
             user = authenticate(username=CFN, password=ECN)
 
@@ -50,6 +48,3 @@ def login(request):
     # Si llegamos al final renderizamos el formulario
     return render(request, "login.html", {'form': form})
 
-
-def EnviarCFN():
-    return CFNSupreme
