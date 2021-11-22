@@ -21,7 +21,7 @@ class Persona(models.Model):
     
 
 class Vivienda(models.Model):
-    area = models.DecimalField(default=0,max_digits=5,decimal_places=1)
+    area = models.IntegerField(default=0)
     tipo = models.TextField(default="")
     agua = models.TextField(default="No")
     luz = models.TextField(default="No")
@@ -51,7 +51,7 @@ class Datos(models.Model):
     edad = models.IntegerField(default=0)
     profesion = models.TextField(default="")
     
-    area = models.DecimalField(default=0,max_digits=5,decimal_places=1)
+    area = models.IntegerField(default=0)
     tipo = models.TextField(default="")
     agua = models.TextField(default="No")
     luz = models.TextField(default="No")

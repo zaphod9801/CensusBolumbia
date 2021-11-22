@@ -85,7 +85,11 @@
           </li>
 
           <li class="nav-item  px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="/">Salir</a>
+            <a class="nav-link text-uppercase text-expanded" onclick="return confirm('¿Seguro que desea salir? Tenga en cuenta que sus respuestas seguiran ahi si ingresa nuevamente')" href="/">Salir</a>
+          </li>
+
+           <li class="nav-item  px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" onclick="return confirm('¿Seguro que desea salir y borrar? Si hace esto todas sus respuestas se eliminaran, si solo quiere suspender el censo cierre la ventana o use el boton de Salir')" href="{% url 'eliminar' %}"> Salir y Borrar </a>
           </li>
          
         </ul>

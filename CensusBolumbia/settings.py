@@ -114,6 +114,10 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False #Para que puedan cerrar el navegador y seguir después
+SESSION_COOKIE_AGE = 30 * 60 #Para que la sesión dure 30 minutos
+
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'America/Cancun'
@@ -129,9 +133,20 @@ import os
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+
+#Esto lo usará principalmente el despliegue
 STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = 'AppCenso'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 django_heroku.settings(locals()) 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR / 'media')
+
+
+#Para enviar correos de censo virtual llenado
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "pruebaCensusBolumbiaCorreo@gmail.com"
+EMAIL_HOST_PASSWORD = "prueba12345"

@@ -15,7 +15,7 @@ def registro(request):
         form = registroForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("/AppCenso/direccion/")
+            return redirect("/AppCenso/inicial/")
     else:
         form = registroForm()
     contexto = {
@@ -43,7 +43,7 @@ def login(request):
                 do_login(request, user)
                 # Y le redireccionamos a la portada
                 messages.success(request, f'Hola! Como estas hoy?')
-                return redirect("/AppCenso/direccion/")
+                return redirect("/AppCenso/inicial/")
 
     # Si llegamos al final renderizamos el formulario
     return render(request, "login.html", {'form': form})

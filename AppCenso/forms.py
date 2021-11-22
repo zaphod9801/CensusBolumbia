@@ -40,7 +40,7 @@ class formDireccion(forms.Form):
     barrio = forms.CharField(label="¿En que barrio vive?")
     direccion = forms.CharField(label="¿Cual es su dirección?")
     estrato = forms.IntegerField(label="¿Cual es el estrato de la zona donde vive?", min_value = 1, max_value = 6)
-    codigoPostal = forms.IntegerField(label="¿Cual es el codigo postal de la zona donde vive?", min_value = 10000, max_value=99999)
+    codigoPostal = forms.IntegerField(label="¿Cual es el codigo postal de la zona donde vive?", min_value = 1000, max_value=99999)
     
     
     
@@ -54,7 +54,7 @@ class formPersona(forms.Form):
     
 
 class formVivienda(forms.Form):
-    area = forms.IntegerField(label="Area en metros cuadrados de su vivienda", max_value=9999)
+    area = forms.IntegerField(label="Area en metros cuadrados de su vivienda", max_value=9999, min_value = 1)
     tipo = forms.ChoiceField(label="Tipo de vivienda", widget=forms.Select, choices=tiposVivienda)
     agua = forms.ChoiceField(label="¿Tiene servicio de agua?",widget=forms.Select,choices=opciones)
     luz = forms.ChoiceField(label="¿Tiene servicio de electricidad?",widget=forms.Select,choices=opciones)

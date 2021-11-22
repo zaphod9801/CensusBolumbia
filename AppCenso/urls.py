@@ -1,10 +1,14 @@
 from django.urls import path
-from .views import VistaDireccion, VistaPersona, VistaVivienda, VistaFeedback, EnviarDireccion, EnviarPersona, EnviarVivienda, EnviarFeedback, ImprimirDatos
+from .views import VistaDireccion, VistaPersona, VistaVivienda, VistaFeedback, EnviarDireccion, EnviarPersona, EnviarVivienda, EnviarFeedback, ImprimirDatos, valoresIniciales, eliminarTodaLaSession
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.decorators.cache import cache_page
 
 urlpatterns = [
+    path('inicial/',valoresIniciales,name = "inicial"),
+    
+    path('eliminar/',eliminarTodaLaSession,name = "eliminar"),
+    
     path('direccion/',VistaDireccion,name = "direccion"),
     path('enviarDireccion/',EnviarDireccion,name = "enviarDireccion"),
     
