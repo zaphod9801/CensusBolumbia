@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import django_heroku
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -26,7 +27,7 @@ SECRET_KEY = 'yitrrp1r4x_5**m+vu#8pn81you@^%f%_h%s$$+(o#knd#kah&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','localhost','d7e8-186-83-117-15.ngrok.io']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -130,6 +131,7 @@ import os
 
 STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = 'AppCenso'
-STATIC_ROOT = 'CensusBolumbia/CensusBolumbia/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+django_heroku.settings(locals()) 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR / 'media')
