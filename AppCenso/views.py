@@ -369,12 +369,12 @@ def ImprimirDatos(request):
 def CensoVirtual(request):
     CFNt = None #Aveces ocurria un bug en que el CFN no se obtenía adecuadamente
     try:
-        CFNt = request.user.get_username()
+        CFNt = request.user.username
         
     except:
         CFNt = 0
         
-    if CFNt != 0:
+    if CFNt != "":
         asunto = "Censo Virtual llenado"
         mensaje = "El usuario con CFN: "+str(CFNt)+" llenó el censo virtual."
         email_from = settings.EMAIL_HOST_USER
@@ -386,7 +386,7 @@ def CensoVirtual(request):
 def SubirDatos(request):
     CFNt = None #Aveces ocurria un bug en que el CFN no se obtenía adecuadamente
     try:
-        CFNt = int(request.user.get_username())
+        CFNt = int(request.user.username)
         
     except:
         CFNt = 0
