@@ -69,5 +69,4 @@ class formFeedback(forms.Form):
 
 
 class formImprimir(forms.Form):
-    departamento = forms.ChoiceField(label="¿En que departamento vive?",widget=forms.Select,choices = departamentos)
-    ciudad = forms.ChoiceField(label="¿En que ciudad vive?", widget=forms.Select, choices = ciudades)
+    ciudad = forms.ChoiceField(label="¿Que departamento y ciudad desea consultar?", widget=forms.Select, choices = ciudades)

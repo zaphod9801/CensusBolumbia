@@ -10,7 +10,7 @@
         <div class="card">
         <h1 style = "color: black; font-weight: bolder;"> <strong> Tu Consulta </strong> </h1>
         <br>
-        <h3 style = "color: black; font-weight: bolder;"> <strong> Tu consulta sobre {{ciudad}} obtuvo {{Numero}} {% if Numero > 1 %} registros {% endif %} {% if Numero == 1 %} registro {% endif %}</strong> </h1>
+        <h3 style = "color: black; font-weight: bolder;"> <strong> Tu consulta sobre {{ciudad}} obtuvo {{Numero}} {% if Numero > 1 or Numero == 0 %} registros {% endif %} {% if Numero == 1 %} registro {% endif %}</strong> </h1>
         <br>
         <table class="table table-hover">
         <tr>
