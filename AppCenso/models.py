@@ -42,7 +42,7 @@ class Datos(models.Model):
     direccion = models.TextField(default="")
     estrato = models.IntegerField(default=0)
     codigoPostal = models.IntegerField(default=0)
-    CFN = models.IntegerField(default=0)
+    CFN = models.CharField(default="", max_length=30)
     
     PrimerNombre = models.TextField(default="")
     SegundoNombre = models.TextField(default="",null=True)
