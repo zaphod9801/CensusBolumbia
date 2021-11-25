@@ -61,9 +61,6 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav mx-auto">
-          <li class="nav-item  {% if request.path == '/' %} active {% endif %} px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="{% url 'login' %}">Inicio</a>
-          </li>
           <li class="nav-item {% if request.path == '/AppCenso/direccion/' %} active {% endif %} px-lg-4">
             <a class="nav-link text-uppercase text-expanded" href="{% url 'direccion' %}">Direccion</a>
           </li>
@@ -108,7 +105,7 @@
         <ul class="navbar-nav mx-auto">
 
           <li class="nav-item  {% if request.path == '/' %} active {% endif %} px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="{% url 'login' %}">Inicio</a>
+            <a class="nav-link text-uppercase text-expanded" href="{% url 'direccion' %}">Volver al Censo</a>
           </li>
 
           <li class="nav-item {% if request.path|slice:':6' == '/AppCenso/consulta/' %} active {% endif %} px-lg-4">
