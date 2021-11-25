@@ -14,4 +14,4 @@ class registroForm(UserCreationForm):
         
 class loginForm(AuthenticationForm):
     username = forms.IntegerField(label = "CFN")
-    password = forms.CharField(label = "ECN",widget = forms.PasswordInput)
+    password = forms.CharField(label = "ECN")
