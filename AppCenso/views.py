@@ -348,7 +348,6 @@ def ImprimirDatos(request):
             contexto = {
                 "registros":datos,
                 "Numero":NumeroRegistros,
-                "departamento":info['departamento'],
                 "ciudad":info['ciudad']
             }
             
