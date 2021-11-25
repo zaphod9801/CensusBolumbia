@@ -120,7 +120,7 @@ AUTH_PASSWORD_VALIDATORS = [
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False #Para que puedan cerrar el navegador y seguir después
 SESSION_COOKIE_AGE = 30 * 60 #Para que la sesión dure 30 minutos
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-mx'
 
 TIME_ZONE = 'America/Cancun'
 
