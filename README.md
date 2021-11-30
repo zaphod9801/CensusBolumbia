@@ -1,6 +1,6 @@
 # CensusBolumbia
 
-This app is my solution for the final project of "Topicos de ingenieria de software" del segundo semestre del año 2021
+Esta aplicación es mi solución para el final de "Topicos de ingenieria de software" del segundo semestre del año 2021
 
 Para correrla primero se debe crear una carpeta y dentro guardar el contenido del repositorio. Posteriormente dentro de la carpeta hacer:
 
